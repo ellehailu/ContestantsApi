@@ -12,10 +12,20 @@ namespace ContestantsApi.Controllers{
             _db = db;
         }
 
-        // GET api/bipContestants
+        // GET api/bipContestant
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BipContestant>>> Get(){
             return await _db.BipContestants.ToListAsync();
+        }
+
+        // GET api/gbContestant
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BipContestant>> GetBipContestant (int id){
+            BipContestant bipContestant = await _db.BipContestants.FindAsync(id);
+            if (bipContestant == null){
+                return NotFound();
+            }
+            return bipContestant;
         }
     }
 }

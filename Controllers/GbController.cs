@@ -17,6 +17,18 @@ namespace ContestantsApi.Controllers{
         public async Task<ActionResult<IEnumerable<GbContestant>>> Get(){
             return await _db.GbContestants.ToListAsync();
         }
+
+        //GET api/gbContestants/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GbContestant>> GetGbContestant (int id){
+            GbContestant gbContestant = await _db.GbContestants.FindAsync(id);
+
+            if (gbContestant == null){
+                return NotFound();
+            }
+
+            return gbContestant;
+        }
     }
 
 }
