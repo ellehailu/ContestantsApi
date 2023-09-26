@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ContestantsApiContext>(
                   dbContextOptions => dbContextOptions
                     .UseMySql(
-                      builder.Configuration["ConnectionStrings:DefaultConnection"], 
+                      builder.Configuration["ConnectionStrings:DefaultConnection"],
                       ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
                     )
                   )
@@ -19,20 +19,32 @@ builder.Services.AddDbContext<ContestantsApiContext>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Enable CORS 
+builder.Services.AddCors(options =>
+{
+  options.AddDefaultPolicy(builder =>
+  {
+    builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+  });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 else
 {
-    app.UseHttpsRedirection();
+  app.UseHttpsRedirection();
 }
 
-
+// Enable CORS
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
