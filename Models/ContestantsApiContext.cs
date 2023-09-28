@@ -6,6 +6,8 @@ namespace ContestantsApi.Models
         public DbSet<BipContestant> BipContestants { get; set;}
         public DbSet<GbContestant> GbContestants { get; set;}
 
+        public DbSet<PlayerContestant> PlayersContestants { get; set;}
+        
         public ContestantsApiContext(DbContextOptions<ContestantsApiContext> options) : base(options) { 
             
         }

@@ -1,5 +1,7 @@
-namespace ContestantsApi.Models{
-    public class GbContestant{
+namespace ContestantsApi.Models
+{
+    public class GbContestant
+    {
         public int GbContestantId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
@@ -8,5 +10,6 @@ namespace ContestantsApi.Models{
         public string Bio { get; set; }
         public string Photo { get; set; }
         public int SeasonTotal { get; set; }
+
     }
 }

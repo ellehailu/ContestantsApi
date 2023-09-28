@@ -3,6 +3,7 @@ using System;
 using ContestantsApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContestantsApi.Migrations
 {
     [DbContext(typeof(ContestantsApiContext))]
-    partial class ContestantsApiContextModelSnapshot : ModelSnapshot
+    [Migration("20230928212903_UpdateJoinEntity")]
+    partial class UpdateJoinEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,22 +165,19 @@ namespace ContestantsApi.Migrations
                     b.Property<int?>("GbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("playerSeasonTotal")
+                    b.Property<int?>("selectionFiveGbGbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("selectionFiveGb")
+                    b.Property<int?>("selectionFourGbGbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("selectionFourGb")
+                    b.Property<int?>("selectionOneGbGbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("selectionOneGb")
+                    b.Property<int?>("selectionThreeGbGbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("selectionThreeGb")
-                        .HasColumnType("int");
-
-                    b.Property<int>("selectionTwoGb")
+                    b.Property<int?>("selectionTwoGbGbContestantId")
                         .HasColumnType("int");
 
                     b.Property<int>("weekNumber")
@@ -187,6 +186,16 @@ namespace ContestantsApi.Migrations
                     b.HasKey("PlayerContestantID");
 
                     b.HasIndex("GbContestantId");
+
+                    b.HasIndex("selectionFiveGbGbContestantId");
+
+                    b.HasIndex("selectionFourGbGbContestantId");
+
+                    b.HasIndex("selectionOneGbGbContestantId");
+
+                    b.HasIndex("selectionThreeGbGbContestantId");
+
+                    b.HasIndex("selectionTwoGbGbContestantId");
 
                     b.ToTable("PlayersContestants");
                 });
@@ -197,7 +206,37 @@ namespace ContestantsApi.Migrations
                         .WithMany()
                         .HasForeignKey("GbContestantId");
 
+                    b.HasOne("ContestantsApi.Models.GbContestant", "selectionFiveGb")
+                        .WithMany()
+                        .HasForeignKey("selectionFiveGbGbContestantId");
+
+                    b.HasOne("ContestantsApi.Models.GbContestant", "selectionFourGb")
+                        .WithMany()
+                        .HasForeignKey("selectionFourGbGbContestantId");
+
+                    b.HasOne("ContestantsApi.Models.GbContestant", "selectionOneGb")
+                        .WithMany()
+                        .HasForeignKey("selectionOneGbGbContestantId");
+
+                    b.HasOne("ContestantsApi.Models.GbContestant", "selectionThreeGb")
+                        .WithMany()
+                        .HasForeignKey("selectionThreeGbGbContestantId");
+
+                    b.HasOne("ContestantsApi.Models.GbContestant", "selectionTwoGb")
+                        .WithMany()
+                        .HasForeignKey("selectionTwoGbGbContestantId");
+
                     b.Navigation("GbContestant");
+
+                    b.Navigation("selectionFiveGb");
+
+                    b.Navigation("selectionFourGb");
+
+                    b.Navigation("selectionOneGb");
+
+                    b.Navigation("selectionThreeGb");
+
+                    b.Navigation("selectionTwoGb");
                 });
 #pragma warning restore 612, 618
         }

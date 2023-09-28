@@ -3,6 +3,7 @@ using System;
 using ContestantsApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContestantsApi.Migrations
 {
     [DbContext(typeof(ContestantsApiContext))]
-    partial class ContestantsApiContextModelSnapshot : ModelSnapshot
+    [Migration("20230928211249_UpdatePlayerContestantJoinEntity")]
+    partial class UpdatePlayerContestantJoinEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,23 +165,20 @@ namespace ContestantsApi.Migrations
                     b.Property<int?>("GbContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("playerSeasonTotal")
-                        .HasColumnType("int");
+                    b.Property<string>("selectionFiveGb")
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("selectionFiveGb")
-                        .HasColumnType("int");
+                    b.Property<string>("selectionFourGb")
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("selectionFourGb")
-                        .HasColumnType("int");
+                    b.Property<string>("selectionOneGb")
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("selectionOneGb")
-                        .HasColumnType("int");
+                    b.Property<string>("selectionThreeGb")
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("selectionThreeGb")
-                        .HasColumnType("int");
-
-                    b.Property<int>("selectionTwoGb")
-                        .HasColumnType("int");
+                    b.Property<string>("selectionTwoGb")
+                        .HasColumnType("longtext");
 
                     b.Property<int>("weekNumber")
                         .HasColumnType("int");
@@ -194,10 +193,15 @@ namespace ContestantsApi.Migrations
             modelBuilder.Entity("ContestantsApi.Models.PlayerContestant", b =>
                 {
                     b.HasOne("ContestantsApi.Models.GbContestant", "GbContestant")
-                        .WithMany()
+                        .WithMany("JoinEntities")
                         .HasForeignKey("GbContestantId");
 
                     b.Navigation("GbContestant");
+                });
+
+            modelBuilder.Entity("ContestantsApi.Models.GbContestant", b =>
+                {
+                    b.Navigation("JoinEntities");
                 });
 #pragma warning restore 612, 618
         }
