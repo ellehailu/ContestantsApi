@@ -18,8 +18,6 @@ namespace ContestantsApi.Models
 
         public int playerSeasonTotal { get; set; }
 
-        public GbContestant GbContestant { get; set; }
-
         public int weekNumber { get; set; }
     }
 }

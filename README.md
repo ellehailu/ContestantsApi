@@ -18,3 +18,10 @@
 - In your terminal run `dotnet build`
 - Once the project builds with no errors, run `dotnet ef database update` to update your database.
 - In your terminal run `dotnet watch run` to launch on a local server
+
+
+-------------------------------------------------------------
+
+## To do list
+- add week # endpoint
+- add email and episode total columns
