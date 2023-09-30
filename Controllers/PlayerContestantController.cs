@@ -14,8 +14,18 @@ namespace ContestantsApi.Controllers{
         }
 
         // Get api/playerContestant
+        // Add email and weekNumber endpoint
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PlayerContestant>>> Get(){
+        public async Task<List<PlayerContestant>> Get(string email, int weekNumber){
+            IQueryable<PlayerContestant> query = _db.PlayersContestants.AsQueryable();
+
+            if (email != null){
+                query = query.Where(entry => entry.Email == email);
+            }
+
+            if (weekNumber ! == null){
+                query = query.Where(entry => entry.WeekNumber == weekNumber);
+            }
             return await _db.PlayersContestants.ToListAsync();
         }
 

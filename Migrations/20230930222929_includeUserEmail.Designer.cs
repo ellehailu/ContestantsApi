@@ -2,6 +2,7 @@
 using ContestantsApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContestantsApi.Migrations
 {
     [DbContext(typeof(ContestantsApiContext))]
-    partial class ContestantsApiContextModelSnapshot : ModelSnapshot
+    [Migration("20230930222929_includeUserEmail")]
+    partial class includeUserEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,31 +158,31 @@ namespace ContestantsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("FbID")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PlayerEpisodeTotal")
+                    b.Property<string>("email")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("playerSeasonTotal")
                         .HasColumnType("int");
 
-                    b.Property<int>("SelectionFiveGb")
+                    b.Property<int>("selectionFiveGb")
                         .HasColumnType("int");
 
-                    b.Property<int>("SelectionFourGb")
+                    b.Property<int>("selectionFourGb")
                         .HasColumnType("int");
 
-                    b.Property<int>("SelectionOneGb")
+                    b.Property<int>("selectionOneGb")
                         .HasColumnType("int");
 
-                    b.Property<int>("SelectionOneGbelectionTwoGb")
+                    b.Property<int>("selectionThreeGb")
                         .HasColumnType("int");
 
-                    b.Property<int>("SelectionThreeGb")
+                    b.Property<int>("selectionTwoGb")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeekNumber")
+                    b.Property<int>("weekNumber")
                         .HasColumnType("int");
 
                     b.HasKey("PlayerContestantID");

@@ -6,18 +6,20 @@ namespace ContestantsApi.Models
 
         public string FbID { get; set; }
 
-        public int selectionOneGb { get; set; }
+        public string Email { get; set; }
 
-        public int selectionTwoGb { get; set; }
+        public int SelectionOneGb { get; set; }
 
-        public int selectionThreeGb { get; set; }
+        public int SelectionOneGbelectionTwoGb { get; set; }
 
-        public int selectionFourGb { get; set; }
+        public int SelectionThreeGb { get; set; }
 
-        public int selectionFiveGb { get; set; }
+        public int SelectionFourGb { get; set; }
 
-        public int playerSeasonTotal { get; set; }
+        public int SelectionFiveGb { get; set; }
 
-        public int weekNumber { get; set; }
+        public int PlayerEpisodeTotal { get; set; }
+
+        public int WeekNumber { get; set; }
     }
 }
