@@ -316,19 +316,37 @@ namespace ContestantsApi.Migrations
                     b.Property<string>("FbID")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PlayerEpisodeTotal")
+                    b.Property<int>("PlayerBIPEpisodeTotal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayerGbEpisodeTotal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SelectionFiveBIP")
                         .HasColumnType("int");
 
                     b.Property<int>("SelectionFiveGb")
                         .HasColumnType("int");
 
+                    b.Property<int>("SelectionFourBIP")
+                        .HasColumnType("int");
+
                     b.Property<int>("SelectionFourGb")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SelectionOneBIP")
                         .HasColumnType("int");
 
                     b.Property<int>("SelectionOneGb")
                         .HasColumnType("int");
 
+                    b.Property<int>("SelectionThreeBIP")
+                        .HasColumnType("int");
+
                     b.Property<int>("SelectionThreeGb")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SelectionTwoBIP")
                         .HasColumnType("int");
 
                     b.Property<int>("SelectionTwoGb")

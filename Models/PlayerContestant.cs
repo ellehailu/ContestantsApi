@@ -18,7 +18,17 @@ namespace ContestantsApi.Models
 
         public int SelectionFiveGb { get; set; }
 
-        public int PlayerEpisodeTotal { get; set; }
+        public int SelectionOneBIP { get; set; }
+
+        public int SelectionTwoBIP { get; set; }
+
+        public int SelectionThreeBIP { get; set; }
+
+        public int SelectionFourBIP { get; set; }
+
+        public int SelectionFiveBIP { get; set; }
+        public int PlayerBIPEpisodeTotal { get; set; }
+        public int PlayerGbEpisodeTotal { get; set; }
 
         public int WeekNumber { get; set; }
     }
