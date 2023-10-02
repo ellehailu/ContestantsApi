@@ -10,7 +10,7 @@ namespace ContestantsApi.Models
 
         public int SelectionOneGb { get; set; }
 
-        public int SelectionOneGbelectionTwoGb { get; set; }
+        public int SelectionTwoGb { get; set; }
 
         public int SelectionThreeGb { get; set; }
 
