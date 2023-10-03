@@ -36,5 +36,45 @@ namespace ContestantsApi.Controllers{
 
             return CreatedAtAction("GetBipContestant", new { id = bipContestant.BipContestantId }, bipContestant);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, BipContestant bipContestant){
+            if(id != bipContestant.BipContestantId){
+                return BadRequest();
+            }
+
+            _db.Entry(bipContestant).State = EntityState.Modified;
+
+            try {
+                await _db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException){
+                if(!BipContestantExists(id)){
+                    return NotFound();
+                }
+                else {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBipContestant (int id){
+            BipContestant bipContestant = await _db.BipContestants.FindAsync(id);
+
+            if(bipContestant == null){
+                return NotFound();
+            }
+
+            _db.BipContestants.Remove(bipContestant);
+            await _db.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool BipContestantExists(int id){
+            return _db.BipContestants.Any(e => e.BipContestantId == id);
+        }
     }
 }
