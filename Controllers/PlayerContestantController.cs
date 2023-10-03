@@ -53,7 +53,45 @@ namespace ContestantsApi.Controllers{
         }
 
         // PUT api/playerContestant
-        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, PlayerContestant playerContestant){
+            if(id != playerContestant.PlayerContestantID){
+                return BadRequest();
+            }
+
+            _db.Entry(playerContestant).State = EntityState.Modified;
+
+            try{
+                await _db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException){
+                if(!PlayerContestantExists(id)){
+                    return NotFound();
+                }
+                else{
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePlayerContestant (int id){
+            PlayerContestant playerContestant = await _db.PlayersContestants.FindAsync(id);
+
+            if(playerContestant == null){
+                return NotFound();
+            }
+
+            _db.PlayersContestants.Remove(playerContestant);
+            await _db.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool PlayerContestantExists(int id){
+            return _db.PlayersContestants.Any(e => e.PlayerContestantID == id);
+        }
         
     }
 }
