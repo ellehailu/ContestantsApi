@@ -52,6 +52,8 @@ namespace ContestantsApi.Controllers{
             return CreatedAtAction("GetPlayerContestant", new { id = playerContestant.PlayerContestantID }, playerContestant);
         }
 
-        //
+        // PUT api/playerContestant
+        
+        
     }
 }

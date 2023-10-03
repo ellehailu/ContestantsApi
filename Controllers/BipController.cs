@@ -27,5 +27,14 @@ namespace ContestantsApi.Controllers{
             }
             return bipContestant;
         }
+
+        // POST api/bipContestant
+        [HttpPost]
+        public async Task<ActionResult<BipContestant>> Post([FromBody] BipContestant bipContestant){
+            _db.BipContestants.Add(bipContestant);
+            await _db.SaveChangesAsync();
+
+            return CreatedAtAction("GetBipContestant", new { id = bipContestant.BipContestantId }, bipContestant);
+        }
     }
 }

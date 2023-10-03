@@ -6,6 +6,7 @@ namespace ContestantsApi.Models
         public string Name { get; set; }
         public string PastAppearance { get; set; }
         public string Photo { get; set; }
+        public string Status { get; set; }
         public int EpOneScore { get; set; }
         public int EpTwoScore { get; set; }
         public int EpThreeScore { get; set; }

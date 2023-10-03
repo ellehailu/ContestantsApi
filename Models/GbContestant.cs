@@ -9,6 +9,7 @@ namespace ContestantsApi.Models
         public string Occupation { get; set; }
         public string Bio { get; set; }
         public string Photo { get; set; }
+        public string Status { get; set; }
         public int EpOneScore { get; set; }
         public int EpTwoScore { get; set; }
         public int EpThreeScore { get; set; }
