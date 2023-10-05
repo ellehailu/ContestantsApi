@@ -26,6 +26,7 @@ namespace ContestantsApi.Controllers{
             if (weekNumber ! == 0){
                 query = query.Where(entry => entry.WeekNumber == weekNumber);
             }
+
             return await _db.PlayersContestants.ToListAsync();
         }
 
